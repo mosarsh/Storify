@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="eb757cba-d6cf-481e-8f72-fa71c9c77dc5" ChangeDateTime="08/13/2015 20:50:36">
+    <Property Name="ElementName" Value="[dbo].[User].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[User]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9b2c9baa-465f-4e52-a0f4-1726a1f3d06b" ChangeDateTime="08/13/2015 20:51:58">
+    <Property Name="ElementName" Value="[dbo].[Story].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Story]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="StoryId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9482cf4f-85b2-4fa2-84a4-b45a11b92812" ChangeDateTime="08/13/2015 20:58:36">
+    <Property Name="ElementName" Value="[dbo].[Group].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Group]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GroupId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="62a942b4-7fec-4441-8eee-a546266d1de8" ChangeDateTime="08/13/2015 21:01:00">
+    <Property Name="ElementName" Value="[dbo].[User_Story_Group].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[User_Story_Group]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserStoryGroupId" />
+  </Operation>
+</Operations>

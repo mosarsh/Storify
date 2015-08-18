@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="StorifyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Story">
+          <Key>
+            <PropertyRef Name="StoryId" />
+          </Key>
+          <Property Name="StoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Content" Type="ntext" Nullable="false" />
+          <Property Name="PostedOn" Type="datetimeoffset" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User_Story_Group">
+          <Key>
+            <PropertyRef Name="UserStoryGroupId" />
+          </Key>
+          <Property Name="UserStoryGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="StoryId" Type="int" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_User_Story_Group_Group">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="User_Story_Group" Type="Self.User_Story_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="User_Story_Group">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Story_Group_Story">
+          <End Role="Story" Type="Self.Story" Multiplicity="0..1" />
+          <End Role="User_Story_Group" Type="Self.User_Story_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Story">
+              <PropertyRef Name="StoryId" />
+            </Principal>
+            <Dependent Role="User_Story_Group">
+              <PropertyRef Name="StoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Story_Group_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User_Story_Group" Type="Self.User_Story_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="User_Story_Group">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StorifyModelStoreContainer">
+          <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Story" EntityType="Self.Story" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Story_Group" EntityType="Self.User_Story_Group" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_User_Story_Group_Group" Association="Self.FK_User_Story_Group_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="User_Story_Group" EntitySet="User_Story_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Story_Group_Story" Association="Self.FK_User_Story_Group_Story">
+            <End Role="Story" EntitySet="Story" />
+            <End Role="User_Story_Group" EntitySet="User_Story_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Story_Group_User" Association="Self.FK_User_Story_Group_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="User_Story_Group" EntitySet="User_Story_Group" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StorifyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User_Story_Group" Relationship="StorifyModel.FK_User_Story_Group_Group" FromRole="Group" ToRole="User_Story_Group" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="User_Story_Group" Relationship="StorifyModel.FK_User_Story_Group_User" FromRole="User" ToRole="User_Story_Group" />
+        </EntityType>
+        <EntityContainer Name="StorifyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Groups" EntityType="Self.Group" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Stories" EntityType="StorifyModel.Story" />
+          <EntitySet Name="User_Story_Group" EntityType="StorifyModel.User_Story_Group" />
+          <AssociationSet Name="FK_User_Story_Group_Group" Association="StorifyModel.FK_User_Story_Group_Group">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="User_Story_Group" EntitySet="User_Story_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Story_Group_Story" Association="StorifyModel.FK_User_Story_Group_Story">
+            <End Role="Story" EntitySet="Stories" />
+            <End Role="User_Story_Group" EntitySet="User_Story_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Story_Group_User" Association="StorifyModel.FK_User_Story_Group_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="User_Story_Group" EntitySet="User_Story_Group" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Story">
+          <Key>
+            <PropertyRef Name="StoryId" />
+          </Key>
+          <Property Name="StoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PostedOn" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <NavigationProperty Name="User_Story_Group" Relationship="StorifyModel.FK_User_Story_Group_Story" FromRole="Story" ToRole="User_Story_Group" />
+        </EntityType>
+        <EntityType Name="User_Story_Group">
+          <Key>
+            <PropertyRef Name="UserStoryGroupId" />
+          </Key>
+          <Property Name="UserStoryGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="StoryId" Type="Int32" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="StorifyModel.FK_User_Story_Group_Group" FromRole="User_Story_Group" ToRole="Group" />
+          <NavigationProperty Name="Story" Relationship="StorifyModel.FK_User_Story_Group_Story" FromRole="User_Story_Group" ToRole="Story" />
+          <NavigationProperty Name="User" Relationship="StorifyModel.FK_User_Story_Group_User" FromRole="User_Story_Group" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_User_Story_Group_Group">
+          <End Type="StorifyModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="StorifyModel.User_Story_Group" Role="User_Story_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="User_Story_Group">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Story_Group_Story">
+          <End Type="StorifyModel.Story" Role="Story" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="StorifyModel.User_Story_Group" Role="User_Story_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Story">
+              <PropertyRef Name="StoryId" />
+            </Principal>
+            <Dependent Role="User_Story_Group">
+              <PropertyRef Name="StoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Story_Group_User">
+          <End Type="StorifyModel.User" Role="User" Multiplicity="1" />
+          <End Type="StorifyModel.User_Story_Group" Role="User_Story_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="User_Story_Group">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StorifyModelStoreContainer" CdmEntityContainer="StorifyEntities">
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="StorifyModel.Group">
+              <MappingFragment StoreEntitySet="Group">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="StorifyModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stories">
+            <EntityTypeMapping TypeName="StorifyModel.Story">
+              <MappingFragment StoreEntitySet="Story">
+                <ScalarProperty Name="PostedOn" ColumnName="PostedOn" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="StoryId" ColumnName="StoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Story_Group">
+            <EntityTypeMapping TypeName="StorifyModel.User_Story_Group">
+              <MappingFragment StoreEntitySet="User_Story_Group">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="StoryId" ColumnName="StoryId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserStoryGroupId" ColumnName="UserStoryGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

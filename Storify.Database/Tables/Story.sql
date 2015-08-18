@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Story]
+(
+	[StoryId] INT NOT NULL PRIMARY KEY IDENTITY,
+    [Title] NVARCHAR(100) NOT NULL, 
+    [Description] NVARCHAR(255) NOT NULL, 
+    [Content] NTEXT NOT NULL, 
+    [PostedOn] DATETIMEOFFSET NOT NULL
+)

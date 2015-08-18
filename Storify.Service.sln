@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storify.Service", "Storify.Service\Storify.Service.csproj", "{F54465D0-383F-4FD1-976A-B6E4086FA9AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storify.Business", "Storify.Business\Storify.Business.csproj", "{53BB70CE-5426-4FAA-8BEC-2DF8D4A4F8E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storify.Data", "Storify.Data\Storify.Data.csproj", "{17E55006-4F9E-4A82-B52D-B3BE54D90746}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Storify.Database", "Storify.Database\Storify.Database.sqlproj", "{D83DB882-9477-499D-ACC2-FF0D8BC53B96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storify.Model", "Storify.Model\Storify.Model.csproj", "{3B017534-E2FD-4C25-A264-C8BABF660600}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{32265F35-8951-4420-A9DD-30724D4D0DD3}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F54465D0-383F-4FD1-976A-B6E4086FA9AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F54465D0-383F-4FD1-976A-B6E4086FA9AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F54465D0-383F-4FD1-976A-B6E4086FA9AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F54465D0-383F-4FD1-976A-B6E4086FA9AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53BB70CE-5426-4FAA-8BEC-2DF8D4A4F8E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53BB70CE-5426-4FAA-8BEC-2DF8D4A4F8E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53BB70CE-5426-4FAA-8BEC-2DF8D4A4F8E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53BB70CE-5426-4FAA-8BEC-2DF8D4A4F8E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17E55006-4F9E-4A82-B52D-B3BE54D90746}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17E55006-4F9E-4A82-B52D-B3BE54D90746}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17E55006-4F9E-4A82-B52D-B3BE54D90746}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17E55006-4F9E-4A82-B52D-B3BE54D90746}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D83DB882-9477-499D-ACC2-FF0D8BC53B96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D83DB882-9477-499D-ACC2-FF0D8BC53B96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D83DB882-9477-499D-ACC2-FF0D8BC53B96}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D83DB882-9477-499D-ACC2-FF0D8BC53B96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D83DB882-9477-499D-ACC2-FF0D8BC53B96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D83DB882-9477-499D-ACC2-FF0D8BC53B96}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{3B017534-E2FD-4C25-A264-C8BABF660600}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B017534-E2FD-4C25-A264-C8BABF660600}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B017534-E2FD-4C25-A264-C8BABF660600}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B017534-E2FD-4C25-A264-C8BABF660600}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
