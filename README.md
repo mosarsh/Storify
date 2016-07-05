@@ -12,7 +12,7 @@ $ git clone https://github.com/YOUR_USERNAME/Storify.git
 
 YOUR_USERNAME -> Change to your GitHub username
 ```
-2. Build Application to install dependencies:  `Ctrl+Shift+B`
+2. Build Application to install dependencies and add it to IIS:  `Ctrl+Shift+B`
 3. Deploy Database: 
 ```
  - Open Storify.Database project from the list
@@ -20,9 +20,7 @@ YOUR_USERNAME -> Change to your GitHub username
  - Click Publish. It will start creating database with testing data.
 ```
 
-4. Run Application `F5`. It will publish project in IIS
+Now you can run [Storify AngularJS] (../../../Storify.Angular.js) application and add, edit, delete story. Assign it to the groups, etc.
 
-Now you can run [Storify AngularJS] (../../../Storify.Angular.js) application and add, edit, delete data into Database.
-
-Thanks for testing my simple  project. In case you make have any question, please write me.
+Thanks for testing my simple project. In case you may have any question, please write me.
 
